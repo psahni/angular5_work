@@ -1,0 +1,25 @@
+.block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+img {
+  width: 250px;
+  height: 200px;
+  border: 1px solid;
+}
+
+.profiles {
+  margin-top: 2em;
+}
+
+img {
+  margin-right: 10px;
+}
+
+figcaption {
+  font-weight: 700;
+}

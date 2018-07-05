@@ -1,0 +1,6 @@
+{
+  "1": {"id": "1",  "name": "Mickey", "picture": "/assets/images/men-1.jpg", "friends": ["2"]},
+  "2": {"id": "2",  "name": "Steven", "picture": "/assets/images/men-2.jpg", "friends": ["3"]},
+  "3": {"id": "3",  "name": "Mike",   "picture": "/assets/images/men-3.jpg", "friends": []},
+  "4": {"id": "4",  "name": "HRK",   "picture": "/assets/images/men-4.jpg", "friends": []}
+}

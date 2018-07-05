@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row" *ngIf="user">
+    <div class="col-sm-5">
+      <figure>
+        <img [src]="user.picture">
+        <figcaption>{{ user.name }}</figcaption>
+      </figure>
+    </div>
+    <div class="col-sm-6">
+      <span class='block'><strong>Name: </strong> {{ user.name }}</span>
+      <span class='block'><strong>friends Count: </strong> {{ user.friends.length }}</span>
+    </div>
+  </div>
+  <div class="row" *ngIf="profileIds">
+    <div class="col-sm-12 d-flex profiles">
+      <div *ngFor="let profileId of profileIds">
+        <figure (click)="selectProfile(profileId)">
+          <img [src]="users[profileId].picture">
+          <figcaption>{{ users[profileId].name }}</figcaption>
+        </figure>
+        <button (click)="addFriend(profileId)">Add Friend</button>
+      </div>
+    </div>
+  </div>
+</div>
