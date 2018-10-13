@@ -1,17 +1,22 @@
-<form [formGroup]="form" (submit)="addTodo()">
+<form
+  [formGroup]="form"
+  (submit)="onAddTodo()"
+>
   <div class="form-group">
     <label for="Title">
       Title
     </label>
     <input
       formControlName="title"
-      type='text' 
-      id='title' 
+      type='text'
+      id='title'
       class='form-control'
     />
     <div *ngIf="title && title.touched && title.invalid" class="alert alert-danger">
       <div *ngIf="title.errors.required">Title is required.</div>
     </div>
-    <button class="btn btn-primary" type='submit'>Add Todo </button>
+    <button class="btn btn-primary" type='submit'>
+      Add Todo
+    </button>
   </div>
 </form>

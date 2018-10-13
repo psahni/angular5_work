@@ -1,5 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Todo } from '../todo-item/todo-item.component';
 
 @Component({
   selector: 'app-add-todo',
@@ -9,14 +10,15 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class AddTodoComponent implements OnInit {
   form: FormGroup;
 
+  @Output() addTodo = new EventEmitter<{ title: string }>();
   constructor(@Inject(FormBuilder) fb: FormBuilder) {
     this.form = fb.group({
       title: ['', Validators.required],
     });
   }
 
-  addTodo() {
-    console.log('>> add');
+  onAddTodo() {
+    this.addTodo.emit({ title: this.form.value.title });
   }
 
   get title() { return this.form.get('title'); }

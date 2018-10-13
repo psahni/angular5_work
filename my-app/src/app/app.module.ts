@@ -16,6 +16,7 @@ import { youTubeSearchInjectables } from './youtube-search/you-tube-search.injec
 import { ProfileService } from './profile/profile.service';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ProfileComponent } from './profile/profile.component';
+import { YourchildcompnameComponent } from './plainsight/yourchildcompname/yourchildcompname.component';
 // Every component must be declared here.
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
     SearchComponentComponent,
     SearchResultComponent,
     ProfileComponent,
+    YourchildcompnameComponent,
   ],
   imports: [
     BrowserModule,
