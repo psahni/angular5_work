@@ -1,4 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +8,9 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./add-todo.component.css']
 })
 export class AddTodoComponent implements OnInit {
+
+  @Output() addTodo = new EventEmitter<{title: string}>();
+
   form: FormGroup;
 
   constructor(@Inject(FormBuilder) fb: FormBuilder) {
@@ -15,13 +19,12 @@ export class AddTodoComponent implements OnInit {
     });
   }
 
-  addTodo() {
-    console.log('>> add');
+  onAddTodo() {
+    this.addTodo.emit({ title: this.form.value.title });
   }
 
   get title() { return this.form.get('title'); }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

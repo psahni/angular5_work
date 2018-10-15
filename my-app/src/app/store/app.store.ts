@@ -11,4 +11,4 @@ const reducers = {
   todos: todoListReducer
 };
 
-export const Store = StoreModule.forRoot(reducers);
+export const AppStore = StoreModule.forRoot(reducers);
