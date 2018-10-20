@@ -19,11 +19,11 @@ export class AddTodoComponent implements OnInit {
 
   onAddTodo() {
     this.addTodo.emit({ title: this.form.value.title });
+    this.form.reset();
   }
 
   get title() { return this.form.get('title'); }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
