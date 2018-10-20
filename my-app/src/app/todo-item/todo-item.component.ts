@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export interface Todo {
   id: number;
   title: string;
+  completed: boolean;
 }
 
 @Component({
@@ -13,7 +14,18 @@ export interface Todo {
 
 
 export class TodoItemComponent {
-  @Input('todo') todo: Todo;
+  @Input() todo: Todo;
+  @Output() completeTodo =  new EventEmitter<{id: number, completed: boolean}>();
 
-  constructor() { }
+  constructor() {}
+
+  markComplete($event) {
+    const checked = $event.target.checked;
+    this.completeTodo.emit({ id: this.todo.id, completed: checked });
+  }
+
+  isCompleted() {
+    return this.todo.completed;
+  }
+
 }

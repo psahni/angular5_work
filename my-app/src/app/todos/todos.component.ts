@@ -11,16 +11,18 @@ import { Todo } from '../todo-item/todo-item.component';
 export class TodosComponent {
   todos = [{
     id: 1,
-    title: 'Wake Up'
+    title: 'Wake Up',
+    completed: false
   },
   {
     id: 2,
-    title: 'Coding'
+    title: 'Coding',
+    completed: false
   }];
 
   constructor() { }
 
   addTodo(todo: { title: string }) {
-    this.todos.push({ id: this.todos.length + 1, title: todo.title});
+    this.todos.push({ id: this.todos.length + 1, title: todo.title, completed: false });
   }
 }

@@ -1,1 +1,9 @@
-{{ todo.id }} {{ todo.title }}
+
+<div class='todo-item flex'>
+  <div class='flex-item' [class.strike]="isCompleted()">
+    {{ todo.id }} {{ todo.title }}
+  </div>
+  <div class='flex-item'>
+    <input type='checkbox' (change)="markComplete($event)"/>
+  </div>
+</div>
