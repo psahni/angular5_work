@@ -1,0 +1,25 @@
+.app-main {
+  width: 750px;
+  margin: 0 auto;
+  border: 1px solid peachpuff;
+  height: calc(100vh - 20px);
+}
+
+.body {
+  margin-left: 20px;
+}
+
+input {
+  width: 250px;
+  height: 30px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+.error {
+  color: red;
+}
