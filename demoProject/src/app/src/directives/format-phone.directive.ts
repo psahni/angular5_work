@@ -1,17 +1,16 @@
-import { parsePhoneNumber, AsYouType, CountryCode } from 'libphonenumber-js'
+import { parsePhoneNumber, CountryCode } from 'libphonenumber-js';
 
-import { Directive, Input, OnInit, HostListener, ElementRef, Renderer, Renderer2 } from '@angular/core';
+import { Directive, Input, OnInit, HostListener, ElementRef, Renderer } from '@angular/core';
+import { format } from 'util';
 
 @Directive({
   selector: '[appFormatPhone]'
 })
-export class FormatPhoneDirective implements OnInit {
+export class FormatPhoneDirective {
   errorElement;
-
-  constructor(private el: ElementRef, private renderer: Renderer) { }
+  constructor(private el: ElementRef,  private renderer: Renderer) { }
 
   @Input() appFormatPhone: CountryCode;
-
   @HostListener('blur') format() {
 
     try {
@@ -30,14 +29,5 @@ export class FormatPhoneDirective implements OnInit {
       this.errorElement.innerHTML = 'Not a valid phone number';
       this.errorElement.style.display = 'inline';
     }
-
-
-  }
-
-
-
-  ngOnInit() {
-    // console.log(this.appFormatPhone);
-
   }
 }

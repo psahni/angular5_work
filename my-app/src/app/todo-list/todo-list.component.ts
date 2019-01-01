@@ -1,4 +1,8 @@
-import { Component, OnInit, Input, ViewChild, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, Input,
+  ViewChild, AfterViewInit,
+  ViewChildren, QueryList, OnChanges, Output,
+  EventEmitter
+} from '@angular/core';
 import { Todo, TodoItemComponent} from '../todo-item/todo-item.component';
 
 @Component({
@@ -7,31 +11,48 @@ import { Todo, TodoItemComponent} from '../todo-item/todo-item.component';
   styleUrls: ['./todo-list.component.css']
 })
 
-export class TodoListComponent implements OnInit, AfterViewInit {
-  @ViewChild(TodoItemComponent) itemComponent: TodoItemComponent;
-  @ViewChildren(TodoItemComponent) todoitems: QueryList<TodoItemComponent>;
+export class TodoListComponent implements OnInit, OnChanges, AfterViewInit {
+  @ViewChild(TodoItemComponent) set todoItem(component: TodoItemComponent) {
+    // console.log('This will be called every time a ref is updated');
+    // console.log(component);
+  }
+
+  @ViewChildren(TodoItemComponent) set todoItem2(components: QueryList<TodoItemComponent>) {
+    // console.log('This will be called every time a ref is updated');
+    // console.log(components);
+  }
+
+  // @ViewChild(TodoItemComponent) itemComponent: TodoItemComponent; // This will be called in the life cycle function only once
 
   @Input() todos: Todo[];
+  @Output()   complete = new EventEmitter();
+  @Output()   delete   = new EventEmitter();
+
   constructor() {
     // console.log(`new - itemComponent is ${this.itemComponent}`);
   }
 
   ngOnInit() {
+    console.log('%c ngOnInit of TODO LIST is called', 'yellowgreen');
+  }
 
+  ngOnChanges(todos): void {
+    console.log('changes:-', todos);
+    console.log('%c ngOnChanges of TODO LIST is called', 'yellowgreen');
   }
 
   ngAfterViewInit() {
-    console.log(`ngAfterViewInit - TodoItemComponent is ${JSON.stringify(this.itemComponent)}`);
-    const todoitems = this.todoitems.toArray() ;
-   // console.log('--> ', todoitems[0]);
+    // console.log('after view init..');
+    // console.log(this.itemComponent);
+    // const todoitems = this.todoitems.toArray() ;
+    // console.log('--> ', todoitems[0]);
   }
 
-  markComplete({ id, completed }) {
+  completeTodo(todo) {
+    this.complete.emit(todo);
+  }
 
-    const todoLoc = this.todos.findIndex((_todo) => _todo.id === id);
-    const todo = this.todos[todoLoc];
-    todo.completed = completed;
-
-    console.log('updated todos = ', JSON.stringify(this.todos, null, 2));
+  deleteTodo(todo) {
+    this.delete.emit(todo);
   }
 }

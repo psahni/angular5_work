@@ -1,0 +1,10 @@
+app-todo-list {
+  border: 1px solid royalblue;
+  display: block;
+}
+
+:host {
+  padding: 10px;
+  border: 2px solid seagreen;
+  display: block;
+}

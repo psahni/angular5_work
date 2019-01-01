@@ -1,5 +1,7 @@
 <app-todo-list
   [todos]="todos"
+  (delete)="deleteTodo($event)"
+  (complete)="completeTodo($event)"
 >
 </app-todo-list>
 

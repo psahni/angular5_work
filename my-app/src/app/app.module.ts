@@ -16,7 +16,9 @@ import { youTubeSearchInjectables } from './youtube-search/you-tube-search.injec
 import { ProfileService } from './profile/profile.service';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ProfileComponent } from './profile/profile.component';
-import { YourchildcompnameComponent } from './plainsight/yourchildcompname/yourchildcompname.component';
+import { DropdownModule } from 'example-ng6-lib';
+import { DemoComponent } from './demo/demo.component';
+// import { DropdownModule } from 'odigo-ui-components';
 // Every component must be declared here.
 
 @NgModule({
@@ -31,19 +33,21 @@ import { YourchildcompnameComponent } from './plainsight/yourchildcompname/yourc
     SearchComponentComponent,
     SearchResultComponent,
     ProfileComponent,
-    YourchildcompnameComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
+    DropdownModule,
     RouterModule.forRoot([
       { path: '',       component: HeroesComponent },
       { path: 'todos',  component: TodosComponent },
       { path: 'youtube', component: YoutubeSearchComponent},
       { path: 'profile-management', component: ProfileComponent }
-    ])
+      { path: 'components', component: DemoComponent }
+    ]),
   ],
   providers: [youTubeSearchInjectables, ProfileService],
   bootstrap: [AppComponent]

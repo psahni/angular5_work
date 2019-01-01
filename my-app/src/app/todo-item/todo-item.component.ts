@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterContentInit, AfterViewInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 
 export interface Todo {
   id: number;
@@ -9,23 +9,43 @@ export interface Todo {
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
-  styleUrls: ['./todo-item.component.css']
+  styleUrls: ['./todo-item.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 
-export class TodoItemComponent {
+export class TodoItemComponent implements OnInit, OnChanges , AfterContentInit, AfterViewInit, OnDestroy {
   @Input() todo: Todo;
-  @Output() completeTodo =  new EventEmitter<{id: number, completed: boolean}>();
 
   constructor() {}
 
-  markComplete($event) {
-    const checked = $event.target.checked;
-    this.completeTodo.emit({ id: this.todo.id, completed: checked });
+
+  /**
+   * LIFE CYCLE HOOKS
+   *
+   */
+
+  ngOnInit() {
+    console.log('%c ngOnInit function called', 'color: red');
+   }
+
+  ngOnChanges() {
+    console.log('%c OnChanges function called', 'color: orange');
   }
 
-  isCompleted() {
-    return this.todo.completed;
+  ngAfterContentInit() {
+    console.log('%c ngAfterContentInit function called', 'color: green');
   }
+
+  ngAfterViewInit() {
+    console.log('%c ngAfterViewInit function called', 'color: violet');
+  }
+
+  ngOnDestroy() {
+    console.log('%c ngOnDestroy function called', 'color: brown');
+  }
+
+  /*------------------------------------------------------------------------------------- */
+
 
 }

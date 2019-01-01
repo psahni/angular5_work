@@ -1,0 +1,16 @@
+<h4>Dropdown:-</h4>
+<enl-od-dropdown></enl-od-dropdown>
+
+<hr/>
+<h3>Volume Controller</h3>
+<label for="volume">Volume</label>
+<input
+  type="range"
+  id="start"
+  name="volume"
+  min="0"
+  max="11"
+  (change)="updateVol($event)"
+>
+
+<input type="range" min="1" max="100" class="slider" id="myRange" (change)="updateVol($event)">

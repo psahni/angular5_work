@@ -1,9 +1,22 @@
-<ul>
-  <li *ngFor="let todo of todos">
+<ul class='list'>
+  <li *ngFor="let todo of todos" class='flex'>
     <app-todo-item
       [todo]="todo"
-      (completeTodo)="markComplete($event)"
+      class='flex-item'
+      [class.strike]="todo.completed"
     >
-  </app-todo-item>
+    </app-todo-item>
+    <div class='flex-item'>
+      <input
+        type='checkbox'
+        [checked]="todo.completed"
+        (change)="completeTodo(todo)"
+      />
+    </div>
+    <div class='flex-item'>
+      <span>
+        <a (click)='deleteTodo(todo)'>x</a>
+      </span>
+    </div>
   </li>
 </ul>
